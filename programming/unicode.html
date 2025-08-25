@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Unicode変換・復元ツール</title>
+  <style>
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
 
+<h2>変換前</h2>
+<textarea id="inputText" placeholder="ここにテキストを入力してください"></textarea>
+<button onclick="convertToUnicode()">↓Unicodeに変換↓</button><button onclick="decodeUnicode()">↑文字列に復元↑</button>
+
+<h2>Unicode変換後</h2>
+<textarea id="unicodeText" placeholder="ここに\uXXXX形式を入力して復元もできます"></textarea>
+
+<h2>Unicode復号後</h2>
+<textarea id="outputText" placeholder="復号後の文字列が表示されます"></textarea>
+
+
+<script>
+  // 通常文字列をUnicodeエスケープに変換
+  function convertToUnicode() {
+    const input = document.getElementById('inputText').value;
+    let result = '';
+    for (let i = 0; i < input.length; i++) {
+      const code = input.charCodeAt(i);
+      result += '\\u' + code.toString(16).padStart(4, '0');
+    }
+    document.getElementById('unicodeText').value = result;
+  }
+
+  // Unicodeエスケープを元の文字列に復元
+  function decodeUnicode() {
+    const unicodeStr = document.getElementById('unicodeText').value;
+    try {
+      const decoded = unicodeStr.replace(/\\u([\dA-Fa-f]{4})/g, function(match, grp) {
+        return String.fromCharCode(parseInt(grp, 16));
+      });
+      document.getElementById('outputText').value = decoded;
+    } catch (e) {
+      alert("復元に失敗しました。\\uXXXX形式になっているか確認してください。");
+    }
+  }
+</script>
+
+</body>
+</html>
