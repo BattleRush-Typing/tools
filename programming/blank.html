@@ -2,12 +2,22 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>About:Blank Iframe Launcher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>About:blank launcher</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <div class="navbar">
+    <a href="/index.html"><div class="navcontent">Home</div></a>
+    <a href="/projects/index.html"><div class="navcontent">Games</div></a>
+    <a href="/tools/index.html"><div class="navcontent">Tools</div></a>
+    <a href="/blog/index.html"><div class="navcontent">Blog</div></a>
+    <a href="/settings/index.html"><div class="navcontent">Settings</div></a>
+    <a href="/about/index.html"><div class="navcontent">About</div></a>
+  </div>
   <h1>About:Blank Launcher</h1>
   <form id="launchForm">
-    <label for="urlInput">表示したいURLを入力:</label><br>
+    <label for="urlInput">input URL</label><br>
     <input type="text" id="urlInput" placeholder="https://example.com" required>
     <button type="submit">Launch</button>
   </form>
@@ -29,10 +39,6 @@
             <head>
               <title>About:Blank</title>
               <style>
-                html, body {
-                  margin: 0;
-                  height: 100%;
-                }
                 iframe {
                   border: none;
                   width: 100%;
@@ -48,7 +54,7 @@
         newWindow.document.write(content);
         newWindow.document.close();
       } else {
-        alert("ポップアップがブロックされました。ブラウザの設定を確認してください。");
+        alert("can't launch. Check your browser settings.");
       }
     });
   </script>
