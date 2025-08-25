@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>About:Blank Iframe Launcher</title>
+</head>
+<body>
+  <h1>About:Blank Launcher</h1>
+  <form id="launchForm">
+    <label for="urlInput">表示したいURLを入力:</label><br>
+    <input type="text" id="urlInput" placeholder="https://example.com" required>
+    <button type="submit">Launch</button>
+  </form>
+
+  <script>
+    document.getElementById('launchForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const input = document.getElementById('urlInput').value.trim();
+
+      if (!input) return;
+
+      const url = input.match(/^https?:\/\//) ? input : 'https://' + input;
+
+      const newWindow = window.open('about:blank');
+      if (newWindow) {
+        const content = `
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <title>About:Blank</title>
+              <style>
+                html, body {
+                  margin: 0;
+                  height: 100%;
+                }
+                iframe {
+                  border: none;
+                  width: 100%;
+                  height: 100%;
+                }
+              </style>
+            </head>
+            <body>
+              <iframe src="${url}" allowfullscreen></iframe>
+            </body>
+          </html>
+        `;
+        newWindow.document.write(content);
+        newWindow.document.close();
+      } else {
+        alert("ポップアップがブロックされました。ブラウザの設定を確認してください。");
+      }
+    });
+  </script>
+</body>
+</html>
