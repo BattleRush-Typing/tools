@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>% Encode & Decode Tool</title>
+    <link rel="stylesheet" href="/styles.css">
+  <style>
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="/index.html"><div class="navcontent">Home</div></a>
+    <a href="/projects/index.html"><div class="navcontent">Games</div></a>
+    <a href="/tools/index.html"><div class="navcontent">Tools</div></a>
+    <a href="/blog/index.html"><div class="navcontent">Blog</div></a>
+    <a href="/settings/index.html"><div class="navcontent">Settings</div></a>
+    <a href="/about/index.html"><div class="navcontent">About</div></a>
+  </div>
+<h2>変換前</h2>
+<textarea id="plainText" placeholder="input text to encode"></textarea>
+<button onclick="encodePercent()">変換する</button>
+
+<h2>%エンコード後</h2>
+<textarea id="encodedText" placeholder="encoded text will displayed. or input text to decode"></textarea>
+<button onclick="decodePercent()">復元する</button>
+
+<h2>%デコード後</h2>
+<textarea id="decodedText" placeholder="decoded text will display"></textarea>
+<script>
+  // 通常テキスト → %エンコード（URLエンコード）
+  function encodePercent() {
+    const input = document.getElementById('plainText').value;
+    const encoded = encodeURIComponent(input);
+    document.getElementById('encodedText').value = encoded;
+  }
+
+  // %エンコード → 元のテキストにデコード
+  function decodePercent() {
+    const input = document.getElementById('encodedText').value;
+    try {
+      const decoded = decodeURIComponent(input);
+      document.getElementById('decodedText').value = decoded;
+    } catch (e) {
+      alert("failed");
+    }
+  }
+</script>
+
+</body>
+</html>
