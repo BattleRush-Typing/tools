@@ -2,7 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Unicode変換・復元ツール</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Unicode変換</title>
+  <link rel="stylesheet" href="/styles.css">
   <style>
     textarea {
       width: 100%;
@@ -11,8 +13,16 @@
   </style>
 </head>
 <body>
-
-<h2>変換前</h2>
+  <div class="navbar">
+    <a href="/index.html"><div class="navcontent">Home</div></a>
+    <a href="/projects/index.html"><div class="navcontent">Games</div></a>
+    <a href="/tools/index.html"><div class="navcontent">Tools</div></a>
+    <a href="/blog/index.html"><div class="navcontent">Blog</div></a>
+    <a href="/settings/index.html"><div class="navcontent">Settings</div></a>
+    <a href="/about/index.html"><div class="navcontent">About</div></a>
+  </div>
+  <p></p>
+<p id="sentense>変換前</p>
 <textarea id="inputText" placeholder="ここにテキストを入力してください"></textarea>
 <button onclick="convertToUnicode()">↓Unicodeに変換↓</button><button onclick="decodeUnicode()">↑文字列に復元↑</button>
 
