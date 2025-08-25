@@ -21,7 +21,7 @@
 <button onclick="decodePercent()">デコード</button>
 
 <h2>%decoded Text</h2>
-<textarea id="encodedText" placeholder="decoded text will displayed"></textarea>
+<textarea id="decodedText" placeholder="decoded text will displayed"></textarea>
 <script>
   // 通常テキスト → %エンコード（URLエンコード）
   function encodePercent() {
@@ -35,7 +35,7 @@
     const input = document.getElementById('encodedText').value;
     try {
       const decoded = decodeURIComponent(input);
-      document.getElementById('plainText').value = decoded;
+      document.getElementById('decodedText').value = decoded;
     } catch (e) {
       alert("failed");
     }
