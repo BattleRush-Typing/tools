@@ -2,7 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>%エンコード ツール</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>% Encode & Decode Tool</title>
+    <link rel="stylesheet" href="/styles.css">
   <style>
     textarea {
       width: 100%;
@@ -11,17 +13,24 @@
   </style>
 </head>
 <body>
-
+  <div class="navbar">
+    <a href="/index.html"><div class="navcontent">Home</div></a>
+    <a href="/projects/index.html"><div class="navcontent">Games</div></a>
+    <a href="/tools/index.html"><div class="navcontent">Tools</div></a>
+    <a href="/blog/index.html"><div class="navcontent">Blog</div></a>
+    <a href="/settings/index.html"><div class="navcontent">Settings</div></a>
+    <a href="/about/index.html"><div class="navcontent">About</div></a>
+  </div>
 <h2>normal Text</h2>
 <textarea id="plainText" placeholder="input text to encode"></textarea>
-<button onclick="encodePercent()">%エンコード</button>
+<button onclick="encodePercent()">Encode</button>
 
 <h2>%encoded Text</h2>
 <textarea id="encodedText" placeholder="encoded text will displayed. or input text to decode"></textarea>
-<button onclick="decodePercent()">デコード</button>
+<button onclick="decodePercent()">Decode</button>
 
 <h2>%decoded Text</h2>
-<textarea id="decodedText" placeholder="decoded text will displayed"></textarea>
+<textarea id="decodedText" placeholder="decoded text will display"></textarea>
 <script>
   // 通常テキスト → %エンコード（URLエンコード）
   function encodePercent() {
