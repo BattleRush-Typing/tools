@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>%エンコード ツール</title>
+  <style>
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>normal Text</h2>
+<textarea id="plainText" placeholder="input text to encode"></textarea>
+<button onclick="encodePercent()">%エンコード</button>
+
+<h2>%encoded Text</h2>
+<textarea id="encodedText" placeholder="encoded text will displayed. or input text to decode"></textarea>
+<button onclick="decodePercent()">デコード</button>
+
+<h2>%decoded Text</h2>
+<textarea id="encodedText" placeholder="decoded text will displayed"></textarea>
+<script>
+  // 通常テキスト → %エンコード（URLエンコード）
+  function encodePercent() {
+    const input = document.getElementById('plainText').value;
+    const encoded = encodeURIComponent(input);
+    document.getElementById('encodedText').value = encoded;
+  }
+
+  // %エンコード → 元のテキストにデコード
+  function decodePercent() {
+    const input = document.getElementById('encodedText').value;
+    try {
+      const decoded = decodeURIComponent(input);
+      document.getElementById('plainText').value = decoded;
+    } catch (e) {
+      alert("failed");
+    }
+  }
+</script>
+
+</body>
+</html>
