@@ -21,15 +21,17 @@ body {
   user-select: none;
 }
 .title{
-  text-align: center;
-  font-size: 32px;
-}
-.sentense{
+  margin: 0px;
   text-align: center;
   font-size: 24px;
 }
+.sentense{
+  margin:0px,10px,0px,0px;
+  text-align: center;
+  font-size: 16px;
+}
 a{
-  text-decoration: none:
+  text-decoration: none;
 }
 footer {
   text-align: center;
